@@ -8,7 +8,7 @@ Python3 version is required to use this script. Furthermore, this script is inte
 It's recommended to clone this repository to your Download folder.
 
 ```
-git clone https://github.com/maxzita/static-library-script ~/Downloads/staticLib
+git clone https://github.com/andrewunifei/static-library-script ~/Downloads/staticLib
 ```
 It's also recommended that you add the script's folder absolute path to your $PATH variable.
 
