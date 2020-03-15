@@ -43,7 +43,7 @@ while True:
 
 #libName = input("Enter the static library's name: ")
 libName = "libStatic.a"
-outputName = input("Enter the executable file's name that will be outputted: ")
+outputName = "output"
 
 #calling fileToObject function and passing a list of tad files as argument
 if(fileToObject(tad)):
