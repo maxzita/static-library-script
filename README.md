@@ -1,14 +1,14 @@
 # static-library-script
-A script written in Python that facilitate the creation of a static library for C programs in Terminal.
+A script written in Python that facilitate the creation of a static library and the unification of this created library with a client file for C programs in Terminal.
 
 ## Requirements
-Python3 version is required to use this script. Furthermore, this script is intend to use in GNU/Linux operating system.
+Python3 version is required to use this script. This script is intend to use in GNU/Linux operating system.
 
 ## Preparation
 It's recommended to clone this repository to your Download folder.
 
 ```
-git clone https://github.com/andrewunifei/static-library-script ~/Downloads/staticLib
+git clone https://github.com/andrewunifei/static-library-script ~/Downloads/
 ```
 It's also recommended that you add the script's folder absolute path to your $PATH variable.
 
