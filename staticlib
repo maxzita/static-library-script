@@ -54,7 +54,7 @@ while(option < int(0) or option > int(1)):
 if(option == 1):
     #tad's names received from user
     tad = []
-    print("Enter the C file's name that will compose the static library")
+    print("Enter the C library file and client file that will compose the output")
     while True:
         element = input("file: ")
         if element == "":
@@ -103,6 +103,9 @@ if(option == 1):
 
     #deletes all the object files
     deleteObjectFiles(1)
+
+    if (os.path.isfile(libName) and os.path.isfile(outputName)):
+        print("SUCESS! Library generated and output compiled")
 
 else:
     exit()
