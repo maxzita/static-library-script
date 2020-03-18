@@ -47,7 +47,7 @@ while(option < int(0) or option > int(1)):
     print("Chose a number:")
     print("1 - Create a library")
     print("0 - Exit")
-    option = int(input())
+    option = int(input(">> "))
     if(option < int(0) or option > int(1)):
         print("Please, enter a valid number")
 
