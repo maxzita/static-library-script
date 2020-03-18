@@ -41,54 +41,68 @@ def deleteObjectFiles(flag):
     if flag == 1:
         subprocess.run(["rm", objectClient])
 
-#tad's names received from user
-tad = []
-print("Enter the C file's name that will compose the static library")
-while True:
-    element = input("file: ")
-    if element == "":
-        break
-    print("")
-    print("(if there is no more files that will compose the output file, just press RETURN)")
-    print("")
-    tad.append(element)
+#menu
+option = -1
+while(option < int(0) or option > int(1)):
+    print("Chose a number:")
+    print("1 - Create a library")
+    print("0 - Exit")
+    option = int(input())
+    if(option < int(0) or option > int(1)):
+        print("Please, enter a valid number")
 
-#libName = input("Enter the static library's name: ")
-libName = "libStatic.a"
-outputName = "output"
+if(option == 1):
+    #tad's names received from user
+    tad = []
+    print("Enter the C file's name that will compose the static library")
+    while True:
+        element = input("file: ")
+        if element == "":
+            break
+        print("")
+        print("(if there is no more files that will compose the output file, just press RETURN)")
+        print("")
+        tad.append(element)
 
-#calling fileToObject function and passing a list of tad files as argument
-if(fileToObject(tad)):
+    #libName = input("Enter the static library's name: ")
+    libName = "libStatic.a"
+    outputName = "output"
 
-    #list of object files proveninet from fileToObject function
-    objectFile = [
-        filename for filename in os.listdir('.') if any(filename.endswith(ext) for ext in extension[0])
-    ]
+    #calling fileToObject function and passing a list of tad files as argument
+    if(fileToObject(tad)):
 
-    #calling newLibrary function and passing a list of file object to it
-    newLibrary(libName, objectFile)
+        #list of object files proveninet from fileToObject function
+        objectFile = [
+            filename for filename in os.listdir('.') if any(filename.endswith(ext) for ext in extension[0])
+        ]
 
-#in case an entered file does not exist
-else:
-    print("Some files doesn't exist in this directory. Exiting...")
-    deleteObjectFiles(0)
-    exit()
+        #calling newLibrary function and passing a list of file object to it
+        newLibrary(libName, objectFile)
 
-#list containg all files that ends with ".c"
-sourceCode = [filename for filename in os.listdir('.') if any(filename.endswith(ext) for ext in extension[1])]
-
-#searching for the client file, that is, the file that will utilize the static library
-for filename in sourceCode:
-    if filename == tad:
-        continue
+    #in case an entered file does not exist
     else:
-        client = [filename]
+        print("Some files doesn't exist in this directory. Exiting...")
+        deleteObjectFiles(0)
+        exit()
 
-#running the client file with the static library to get an executable output
-fileToObject(client)
-objectClient = client[0][:-1] + "o"
+    #list containg all files that ends with ".c"
+    sourceCode = [filename for filename in os.listdir('.') if any(filename.endswith(ext) for ext in extension[1])]
 
-subprocess.run(["gcc", "-o", outputName, objectClient, libName])
+    #searching for the client file, that is, the file that will utilize the static library
+    for filename in sourceCode:
+        if filename == tad:
+            continue
+        else:
+            client = [filename]
 
-#deletes all the object files
-deleteObjectFiles(1)
+    #running the client file with the static library to get an executable output
+    fileToObject(client)
+    objectClient = client[0][:-1] + "o"
+
+    subprocess.run(["gcc", "-o", outputName, objectClient, libName])
+
+    #deletes all the object files
+    deleteObjectFiles(1)
+
+else:
+    exit()
