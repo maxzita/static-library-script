@@ -105,7 +105,7 @@ if(option == 1):
     deleteObjectFiles(1)
 
     if (os.path.isfile(libName) and os.path.isfile(outputName)):
-        print("SUCESS! Library generated and output compiled")
+        print("SUCCESS! Library generated and output compiled")
 
 else:
     exit()
